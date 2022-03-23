@@ -9,11 +9,11 @@ import os
 
 def extract_words(filename, outputFile):
     print("---------------------------------------------------------------------------")
-    outputFile.write("-------------------------------------------------------------------")
+    outputFile.write("-------------------------------------------------------------------\n")
     print(filename)
-    outputFile.write(filename)
+    outputFile.write(filename+"\n")
     print("---------------------------------------------------------------------------")
-    outputFile.write("-------------------------------------------------------------------")
+    outputFile.write("-------------------------------------------------------------------\n")
     doc_result = docx2python(filename).text
     print(doc_result)
     outputFile.writelines(doc_result)
@@ -27,7 +27,7 @@ def print_tallied(tallied, outputFile):
     #print(sorted_tallied)
     ii = 0
     for item in sorted_tallied:
-        if (item[1]>1):
+        if (item[1]>0):
            if (item[0].isalpha()):
               print(str(item[0]) + ":" + str(item[1]))
               outputFile.write(str(item[0]) + ":" + str(item[1]) + "\n")
