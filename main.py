@@ -27,12 +27,13 @@ def print_tallied(tallied, outputFile):
     #print(sorted_tallied)
     ii = 0
     for item in sorted_tallied:
-        if (item[1]>3):
-           print(str(item[0]) + ":" + str(item[1]))
-           outputFile.writelines(str(item[0]) + ":" + str(item[1]))
-           ii = ii + 1
+        if (item[1]>1):
+           if (item[0].isalpha()):
+              print(str(item[0]) + ":" + str(item[1]))
+              outputFile.write(str(item[0]) + ":" + str(item[1]) + "\n")
+              ii = ii + 1
     print("total: " + str(ii))
-    outputFile.writelines("total: " + str(ii))
+    outputFile.write("total: " + str(ii))
 
 
 def word_document_reader(inputDir, outputFile):
@@ -52,7 +53,7 @@ def word_document_reader(inputDir, outputFile):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     inputDir = r"f:\swissedu_attachments"
-    outputFile = open(r"f:\swissedu.txt", "w+", encoding="utf-8")
+    outputFile = open(r"f:\swissedu.txt", "w", encoding="utf-8")
 
 
     word_document_reader(inputDir, outputFile)
